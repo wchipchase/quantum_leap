@@ -7,7 +7,7 @@ namespace QuantumLeap
 {
     class LeapRepository
     {
-        private List<Leap> _leaps = new List<Leap>();
+        static List<Leap> _leaps = new List<Leap>();
 
         public List<Leap> GetLeaps()
         {
