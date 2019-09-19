@@ -1,4 +1,5 @@
-﻿using System;
+﻿using quantumLeap.UserMenu;
+using System;
 
 namespace quantumLeap
 {
@@ -6,7 +7,8 @@ namespace quantumLeap
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var userMenu = new Menu();
+            userMenu.MenuItems();
         }
     }
 }
