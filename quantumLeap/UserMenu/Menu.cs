@@ -11,7 +11,7 @@ namespace quantumLeap.UserMenu
         {
             while (true)
             {
-                var welcomeMessage = "  Welcome to Quantum! Please enter a number to make your selection or type exit to end the game.";
+                var welcomeMessage = "  Welcome to Quantum Leap! Please enter a number to make your selection or type exit to end the game.";
 
                 var option1TakeALeap = "     1. Take your next leap";
                 var option2FundMoreProject = "     2. Fund more projects";
@@ -54,6 +54,7 @@ namespace quantumLeap.UserMenu
                 {
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.Red;
+                    Console.WriteLine();
                     Console.WriteLine("Please enter a number or type exit to end the game!");
                     Console.ResetColor();
                     Console.WriteLine();
