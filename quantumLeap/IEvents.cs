@@ -6,8 +6,8 @@ namespace quantumLeap
 {
     interface IEvents
     {
-        string _Location { get; }
-        string _Date { get; }
-        string _Host { get; }
+        string Location { get; set; }
+        string Date { get; set; }
+        string Host { get; set; } 
     }
 }
