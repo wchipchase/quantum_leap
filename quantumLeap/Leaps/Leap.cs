@@ -50,10 +50,14 @@ namespace quantumLeap.Leaps
             return currentEvent;
         }
 
-        //private Events addLeaperToEvent()
-        //{
+        public Events addLeaperToEvent()
+        {
+            var finalLeap = getEvent();
 
-        //}
+            finalLeap.addLeaper(getLeaper());
+
+            return finalLeap;
+        }
 
     }
 }
