@@ -35,9 +35,41 @@ namespace quantumLeap.UserMenu
                 }
                 else if (userInput == "2")
                 {
-                    // Fund more project calss/method will be call here.
+                    // Fund more project calls/method will be call here.
+                    var currentAvailableFunds = new Budget("budgetNow", 0);
+                    currentAvailableFunds.FundProject(1000);
 
-                    Console.WriteLine("Add more fund method/class will be call");
+
+                    Console.WriteLine("Your current available funds are ${0}. Add more funds y/n?", currentAvailableFunds._currentBudgetBalance);
+                    var userResponse = Console.ReadLine().ToLower();
+
+                    if (userResponse == "y")
+                    {
+                        Console.WriteLine("Please enter the amount of funds");
+                        var currentBudgetBalance = Convert.ToInt32(Console.ReadLine()) + currentAvailableFunds._currentBudgetBalance;
+                        Console.WriteLine("Your current available funds are ${0}", currentBudgetBalance);
+                        
+                        var menu = new Menu();
+                        
+                        menu.MenuItems();
+                    }
+                    else if (userResponse == "n")
+                    {
+                        Console.WriteLine("You have chosen not to add funds");
+                        var menu = new Menu();
+
+                        menu.MenuItems();
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have made an invalid selection.");
+                        var menu = new Menu();
+
+                        menu.MenuItems();
+                    }
+
+                    // Console.Clear();
                     break;
                 }
                 else if (userInput == "3")
