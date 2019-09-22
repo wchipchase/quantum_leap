@@ -1,9 +1,9 @@
-﻿using quantumLeap.BalanceChecker;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using QuantumLeap;
+using Leap = quantumLeap.Leaps.Leap;
 
 namespace quantumLeap.UserMenu
 {
@@ -30,13 +30,14 @@ namespace quantumLeap.UserMenu
 
                 if (userInput == "1")
                 {
-                    // Leap class/method will be call here.
+                    var leap = new Leap();
+                    var leapRepo = new LeapRepository();
 
-                    Console.WriteLine("you are leaping");
-                    var leaperCanLeap = new LeaperCanLeap();
-                    leaperCanLeap.LeapCharge();
-
-                    break;
+                    var quantumLeap = leap.createALeap();
+                    Console.WriteLine($"{quantumLeap.Leaper} you have lept to, {quantumLeap.Date} {quantumLeap.Location}, you're apparently {quantumLeap.Host}");
+                    leapRepo.SaveNewLeap(quantumLeap);
+                    var menu = new Menu();
+                    menu.MenuItems();
                 }
                 else if (userInput == "2")
                 {
@@ -92,7 +93,6 @@ namespace quantumLeap.UserMenu
                     // Console.Clear();
                     break;
                 }
-            
                 else if (userInput == "3")
                 {
                     // Leap History class/method will be call here.
