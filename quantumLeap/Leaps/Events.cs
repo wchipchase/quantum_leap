@@ -10,11 +10,17 @@ namespace quantumLeap.Leaps
         public string Date { get; set; }
         public string Host { get; set; }
         public string Leaper { get; set; }
+        public bool isPutRight { get; set; }
 
-        public void addLeaper(string person)
+        public void AddLeaper(string person)
         {
             Leaper = person;
             Console.WriteLine(Leaper);
+        }
+
+        public void UpdateIsPutRight(bool isPutRightValue)
+        {
+            isPutRight = isPutRightValue;
         }
     }
 }

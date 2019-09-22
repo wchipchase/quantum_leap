@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using QuantumLeap;
 
 namespace quantumLeap.Leaps
 {
@@ -54,7 +55,7 @@ namespace quantumLeap.Leaps
         {
             var finalLeap = getEvent();
 
-            finalLeap.addLeaper(getLeaper());
+            finalLeap.AddLeaper(getLeaper());
 
             return finalLeap;
         }
