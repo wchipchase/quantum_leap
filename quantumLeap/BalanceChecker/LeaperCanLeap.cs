@@ -11,7 +11,7 @@ namespace quantumLeap.BalanceChecker
         public void LeapCharge()
         {
             var leapRepo = new LeapRepository();
-            var currentBal = leapRepo.GetCurrentBudget();
+            var currentBal = leapRepo.currentAvailableBudget();
 
             if(currentBal >= 1000)
             {
