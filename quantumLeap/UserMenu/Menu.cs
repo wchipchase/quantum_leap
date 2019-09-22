@@ -53,6 +53,9 @@ namespace quantumLeap.UserMenu
                             if (!char.IsNumber(ea))
                             {
                                 Console.WriteLine("Please enter numbers only");
+                                var menu = new Menu();
+
+                                menu.MenuItems();
                             }
                             else
                             {
