@@ -42,7 +42,7 @@ namespace QuantumLeap
         }
         public void saveBudget(int updatedBudget)
         {
-            int Budget = updatedBudget;
+            Budget = updatedBudget;
         }
     }
 

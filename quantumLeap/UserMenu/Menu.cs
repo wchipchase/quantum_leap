@@ -38,38 +38,36 @@ namespace quantumLeap.UserMenu
                 {
                     // Fund more project calls/method will be call here.
                     var currentAvailableFunds = new Budget();
+                    var leapRepo = new LeapRepository();
+                    var currentBalance = leapRepo.currentAvailableBudget();
 
 
 
-                    Console.WriteLine("Your current available funds are ${0}. Add more funds y/n?", currentAvailableFunds.currentBudgetBalance());
+                    Console.WriteLine($"Your current available funds are ${currentBalance}. Add more funds y/n?");
                     var userResponse = Console.ReadLine().ToLower();
 
                     if (userResponse == "y")
                     {
                         Console.WriteLine("Please enter the amount of funds");
                         var enteredAmount = Console.ReadLine().ToCharArray();
-                        foreach(var ea in enteredAmount)
+                        foreach (var ea in enteredAmount)
                         {
                             if (!char.IsNumber(ea))
                             {
                                 Console.WriteLine("Please enter numbers only");
-                                var menu = new Menu();
-
-                                menu.MenuItems();
                             }
                             else
                             {
                                 string rebuilt = new string(enteredAmount);
-                                var currentBudgetBalance = Convert.ToInt32(rebuilt) + currentAvailableFunds.currentBudgetBalance();
-                                Console.WriteLine("Your current available funds are ${0}", currentBudgetBalance);
-                                var leapRepo = new LeapRepository();
+                                var currentBudgetBalance = Convert.ToInt32(rebuilt) + currentBalance;
+                                Console.WriteLine($"Your current available funds are {currentBudgetBalance}");
                                 leapRepo.saveBudget(currentBudgetBalance);
                                 var menu = new Menu();
 
                                 menu.MenuItems();
                             }
                         }
-                        
+
                     }
                     else if (userResponse == "n")
                     {
@@ -90,6 +88,7 @@ namespace quantumLeap.UserMenu
                     // Console.Clear();
                     break;
                 }
+            
                 else if (userInput == "3")
                 {
                     // Leap History class/method will be call here.
