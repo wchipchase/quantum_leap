@@ -1,4 +1,5 @@
-﻿using System;
+﻿using quantumLeap.BalanceChecker;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
@@ -31,6 +32,9 @@ namespace quantumLeap.UserMenu
                     // Leap class/method will be call here.
 
                     Console.WriteLine("you are leaping");
+                    var leaperCanLeap = new LeaperCanLeap();
+                    leaperCanLeap.LeapCharge();
+
                     break;
                 }
                 else if (userInput == "2")
