@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Text;
 using QuantumLeap;
@@ -51,13 +51,13 @@ namespace quantumLeap.Leaps
             return currentEvent;
         }
 
-        public Events addLeaperToEvent()
+        public Events createALeap()
         {
-            var finalLeap = getEvent();
+            var aLeap = getEvent();
 
-            finalLeap.AddLeaper(getLeaper());
+            aLeap.AddLeaper(getLeaper());
 
-            return finalLeap;
+            return aLeap;
         }
 
     }
