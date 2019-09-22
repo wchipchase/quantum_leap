@@ -9,6 +9,9 @@ namespace QuantumLeap
     {
         static List<Leap> _leaps = new List<Leap>();
 
+        static int Budget { get; set; }
+
+
         public List<Leap> GetLeaps()
         {
             return _leaps;
@@ -31,6 +34,16 @@ namespace QuantumLeap
 
             return leap;
         }
+
+        
+        public int currentAvailableBudget()
+        {
+            return Budget;
+        }
+        public void saveBudget(int updatedBudget)
+        {
+            int Budget = updatedBudget;
+        }
     }
 
     internal class Leap
@@ -40,5 +53,6 @@ namespace QuantumLeap
         public string Leaper { get; set; }
         public string Date { get; set; }
         public string Location { get; set; }
+
     }
 }

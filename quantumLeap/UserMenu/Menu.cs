@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using QuantumLeap;
 
 namespace quantumLeap.UserMenu
 {
@@ -36,22 +37,36 @@ namespace quantumLeap.UserMenu
                 else if (userInput == "2")
                 {
                     // Fund more project calls/method will be call here.
-                    var currentAvailableFunds = new Budget("budgetNow", 0);
-                    currentAvailableFunds.FundProject(1000);
+                    var currentAvailableFunds = new Budget();
 
 
-                    Console.WriteLine("Your current available funds are ${0}. Add more funds y/n?", currentAvailableFunds._currentBudgetBalance);
+
+                    Console.WriteLine("Your current available funds are ${0}. Add more funds y/n?", currentAvailableFunds.currentBudgetBalance());
                     var userResponse = Console.ReadLine().ToLower();
 
                     if (userResponse == "y")
                     {
                         Console.WriteLine("Please enter the amount of funds");
-                        var currentBudgetBalance = Convert.ToInt32(Console.ReadLine()) + currentAvailableFunds._currentBudgetBalance;
-                        Console.WriteLine("Your current available funds are ${0}", currentBudgetBalance);
+                        var enteredAmount = Console.ReadLine().ToCharArray();
+                        foreach(var ea in enteredAmount)
+                        {
+                            if (!char.IsNumber(ea))
+                            {
+                                Console.WriteLine("Please enter numbers only");
+                            }
+                            else
+                            {
+                                string rebuilt = new string(enteredAmount);
+                                var currentBudgetBalance = Convert.ToInt32(rebuilt) + currentAvailableFunds.currentBudgetBalance();
+                                Console.WriteLine("Your current available funds are ${0}", currentBudgetBalance);
+                                var leapRepo = new LeapRepository();
+                                leapRepo.saveBudget(currentBudgetBalance);
+                                var menu = new Menu();
+
+                                menu.MenuItems();
+                            }
+                        }
                         
-                        var menu = new Menu();
-                        
-                        menu.MenuItems();
                     }
                     else if (userResponse == "n")
                     {

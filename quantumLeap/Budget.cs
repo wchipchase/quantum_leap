@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using QuantumLeap;
+
 
 namespace quantumLeap
 {
@@ -10,18 +12,23 @@ namespace quantumLeap
         public int BudgetId { get; set; }
 
         // field
-        public int _currentBudgetBalance { get; set; }
+        static int _currentBudgetBalance { get; set; }
 
-        // constructor
-        public Budget(string budgetName, int budgetInitialBalance)
-        {
-            this.BudgetName = budgetName;
-            this._currentBudgetBalance = budgetInitialBalance;
-        }
 
         public void FundProject(int fundsToAdd)
         {
-            this._currentBudgetBalance += fundsToAdd;
+            _currentBudgetBalance += fundsToAdd;
+        }
+
+        public int currentBudgetBalance()
+        {
+            return _currentBudgetBalance;
+        }
+
+        public void saveCurrentBudgetBalanceToRepo(int newBalance)
+        {
+            var leapRepoInstance = new LeapRepository();
+            leapRepoInstance.saveBudget(newBalance);
         }
 
     }
