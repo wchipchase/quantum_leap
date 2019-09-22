@@ -8,7 +8,9 @@ namespace QuantumLeap
     class LeapRepository
     {
         static List<Leap> _leaps = new List<Leap>();
-        static int Budget { get; set; } = 999;
+
+        static int Budget { get; set; }
+
 
         public List<Leap> GetLeaps()
         {
@@ -33,9 +35,14 @@ namespace QuantumLeap
             return leap;
         }
 
-        public int GetCurrentBudget()
+        
+        public int currentAvailableBudget()
         {
             return Budget;
+        }
+        public void saveBudget(int updatedBudget)
+        {
+            Budget = updatedBudget;
         }
     }
 
@@ -46,5 +53,6 @@ namespace QuantumLeap
         public string Leaper { get; set; }
         public string Date { get; set; }
         public string Location { get; set; }
+
     }
 }
