@@ -7,6 +7,7 @@ namespace quantumLeap
     {
         static void Main(string[] args)
         {
+
             var testLeap = new Leap();
 
             var quantumLeap = testLeap.addLeaperToEvent();
