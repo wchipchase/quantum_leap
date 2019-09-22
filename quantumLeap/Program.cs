@@ -1,5 +1,6 @@
 ﻿using System;
 using quantumLeap.Leaps;
+using quantumLeap.UserMenu;
 
 namespace quantumLeap
 {
@@ -7,11 +8,8 @@ namespace quantumLeap
     {
         static void Main(string[] args)
         {
-
-            var testLeap = new Leap();
-
-            var quantumLeap = testLeap.addLeaperToEvent();
-            Console.WriteLine($"{quantumLeap.Leaper} you have lept to, {quantumLeap.Date} {quantumLeap.Location}, you're apparently {quantumLeap.Host}");
+            var userMenu = new Menu();
+            userMenu.MenuItems();
         }
     }
 }

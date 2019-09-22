@@ -15,7 +15,6 @@ namespace quantumLeap.Leaps
         public void AddLeaper(string person)
         {
             Leaper = person;
-            Console.WriteLine(Leaper);
         }
 
         public void UpdateIsPutRight(bool isPutRightValue)

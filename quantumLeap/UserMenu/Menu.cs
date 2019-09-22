@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using quantumLeap.Leaps;
 
 namespace quantumLeap.UserMenu
 {
@@ -28,9 +29,10 @@ namespace quantumLeap.UserMenu
 
                 if (userInput == "1")
                 {
-                    // Leap class/method will be call here.
+                    var leap = new Leap();
 
-                    Console.WriteLine("you are leaping");
+                    var quantumLeap = leap.addLeaperToEvent();
+                    Console.WriteLine($"{quantumLeap.Leaper} you have lept to, {quantumLeap.Date} {quantumLeap.Location}, you're apparently {quantumLeap.Host}");
                     break;
                 }
                 else if (userInput == "2")
