@@ -119,7 +119,11 @@ namespace quantumLeap.UserMenu
                     }
                     else
                     {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Cannot show history of leaps because no one has lept yet.");
+                        Console.ResetColor();
+                        Console.WriteLine();
                     }
                 } 
                 else if (userInput.ToLower() == "exit")
