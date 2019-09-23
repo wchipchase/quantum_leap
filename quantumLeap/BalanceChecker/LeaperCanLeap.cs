@@ -20,7 +20,7 @@ namespace quantumLeap.BalanceChecker
                 HasEnoughFunds = true;
                 leapRepo.saveBudget(updatedBudget);
                 Console.WriteLine();
-                Console.WriteLine($"$1,00 has been deducted from your budget. Your new balance is ${updatedBudget}. You are good to leap!");
+                Console.WriteLine($"$1,000 has been deducted from your budget. Your new balance is ${updatedBudget}. You are good to leap!");
                 Console.WriteLine();
                 Console.WriteLine("Leap info:");
                 Console.WriteLine();

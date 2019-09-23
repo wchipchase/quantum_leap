@@ -73,7 +73,7 @@ namespace quantumLeap.UserMenu
                             {
                                 string rebuilt = new string(enteredAmount);
                                 var currentBudgetBalance = Convert.ToInt32(rebuilt) + currentBalance;
-                                Console.WriteLine($"Your current available funds are {currentBudgetBalance}");
+                                Console.WriteLine($"Your current available funds are ${currentBudgetBalance}");
                                 leapRepo.saveBudget(currentBudgetBalance);
                                 var menu = new Menu();
 
