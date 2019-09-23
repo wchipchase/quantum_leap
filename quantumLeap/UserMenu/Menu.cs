@@ -16,19 +16,18 @@ namespace quantumLeap.UserMenu
             while (true)
             {
                 var welcomeMessage = "  Welcome to Quantum Leap! Please enter a number to make your selection or type exit to end the game.";
-
                 var option1TakeALeap = "     1. Take your next leap";
                 var option2FundMoreProject = "     2. Fund more projects";
                 var option3LeapHistory = "     3. List leap history";
 
                 Console.WriteLine(welcomeMessage);
                 Console.WriteLine();
-
                 Console.WriteLine(option1TakeALeap);
                 Console.WriteLine(option2FundMoreProject);
                 Console.WriteLine(option3LeapHistory);
 
                 var userInput = Console.ReadLine();
+                Console.Clear();
 
                 if (userInput == "1")
                 {
@@ -62,6 +61,7 @@ namespace quantumLeap.UserMenu
 
                     if (userResponse == "y")
                     {
+                        Console.Clear();
                         Console.WriteLine("Please enter the amount of funds");
                         var enteredAmount = Console.ReadLine().ToCharArray();
                         foreach (var ea in enteredAmount)
@@ -72,10 +72,15 @@ namespace quantumLeap.UserMenu
                             }
                             else
                             {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Green;
                                 string rebuilt = new string(enteredAmount);
                                 var currentBudgetBalance = Convert.ToInt32(rebuilt) + currentBalance;
+                                Console.WriteLine();
                                 Console.WriteLine($"Your current available funds are ${currentBudgetBalance}");
+                                Console.WriteLine();
                                 leapRepo.saveBudget(currentBudgetBalance);
+                                Console.ResetColor();
                                 var menu = new Menu();
 
                                 menu.MenuItems();
@@ -85,9 +90,12 @@ namespace quantumLeap.UserMenu
                     }
                     else if (userResponse == "n")
                     {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("You have chosen not to add funds");
+                        Console.ResetColor();
+                        Console.WriteLine();
                         var menu = new Menu();
-
                         menu.MenuItems();
 
                     }
@@ -110,7 +118,9 @@ namespace quantumLeap.UserMenu
                     for (var i = 0; i < historicalLeaps.Count; i++)
                    // foreach(Events Leap in historicalLeaps)
                     {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine($"Leap {i+1}: \n Leaper:{ historicalLeaps[i].Leaper},\n Date: { historicalLeaps[i].Date},\n Location: { historicalLeaps[i].Location},\n Host: { historicalLeaps[i].Host},\n IsPutRight: { historicalLeaps[i].isPutRight}\n\n");
+                        Console.ResetColor();
                     }
                     //Console.WriteLine("List leap history class/method will be called.");
                     break;
