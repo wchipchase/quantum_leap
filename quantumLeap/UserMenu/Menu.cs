@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using quantumLeap.BalanceChecker;
 using QuantumLeap;
 using quantumLeap.Leaps;
 using Leap = quantumLeap.Leaps.Leap;
@@ -34,11 +35,18 @@ namespace quantumLeap.UserMenu
                     var leap = new Leap();
                     var leapRepo = new LeapRepository();
 
-                    var quantumLeap = leap.createALeap();
-                    Console.WriteLine($"{quantumLeap.Leaper} you have lept to, {quantumLeap.Date} {quantumLeap.Location}, you're apparently {quantumLeap.Host}");
-                    leapRepo.SaveNewLeap(quantumLeap);
-                    var menu = new Menu();
-                    menu.MenuItems();
+                    var leaperCanLeap = new LeaperCanLeap();
+                    var canLeap = leaperCanLeap.LeapCharge();
+
+                    if (canLeap == true)
+                    {
+                        var quantumLeap = leap.createALeap();
+                        Console.WriteLine($"{quantumLeap.Leaper} you have lept to, {quantumLeap.Date} {quantumLeap.Location}, you're apparently {quantumLeap.Host}");
+                        leapRepo.SaveNewLeap(quantumLeap);
+                        var menu = new Menu();
+                        menu.MenuItems();
+                    }
+
                 }
                 else if (userInput == "2")
                 {
@@ -66,7 +74,7 @@ namespace quantumLeap.UserMenu
                             {
                                 string rebuilt = new string(enteredAmount);
                                 var currentBudgetBalance = Convert.ToInt32(rebuilt) + currentBalance;
-                                Console.WriteLine($"Your current available funds are {currentBudgetBalance}");
+                                Console.WriteLine($"Your current available funds are ${currentBudgetBalance}");
                                 leapRepo.saveBudget(currentBudgetBalance);
                                 var menu = new Menu();
 
@@ -109,8 +117,9 @@ namespace quantumLeap.UserMenu
                 } 
                 else if (userInput.ToLower() == "exit")
                 {
-                    break;
-                } else
+                    Environment.Exit(0);
+                }
+                else
                 {
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.Red;
