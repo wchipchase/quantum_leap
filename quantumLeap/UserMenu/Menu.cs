@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using QuantumLeap;
+using quantumLeap.Leaps;
 using Leap = quantumLeap.Leaps.Leap;
 
 namespace quantumLeap.UserMenu
@@ -96,8 +97,14 @@ namespace quantumLeap.UserMenu
                 else if (userInput == "3")
                 {
                     // Leap History class/method will be call here.
-
-                    Console.WriteLine("List leap history class/method will be called.");
+                    var leapRepo = new LeapRepository();
+                    var historicalLeaps = leapRepo.GetLeaps();
+                    for (var i = 0; i < historicalLeaps.Count; i++)
+                   // foreach(Events Leap in historicalLeaps)
+                    {
+                        Console.WriteLine($"Leap {i+1}: \n Leaper:{ historicalLeaps[i].Leaper},\n Date: { historicalLeaps[i].Date},\n Location: { historicalLeaps[i].Location},\n Host: { historicalLeaps[i].Host},\n IsPutRight: { historicalLeaps[i].isPutRight}\n\n");
+                    }
+                    //Console.WriteLine("List leap history class/method will be called.");
                     break;
                 } 
                 else if (userInput.ToLower() == "exit")

@@ -57,6 +57,8 @@ namespace quantumLeap.Leaps
 
             aLeap.AddLeaper(getLeaper());
 
+            aLeap.isPutRight = !aLeap.isPutRight;
+
             return aLeap;
         }
 
