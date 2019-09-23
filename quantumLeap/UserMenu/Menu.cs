@@ -29,6 +29,7 @@ namespace quantumLeap.UserMenu
                 Console.WriteLine(option3LeapHistory);
 
                 var userInput = Console.ReadLine();
+                Console.Clear();
 
                 if (userInput == "1")
                 {
@@ -62,6 +63,7 @@ namespace quantumLeap.UserMenu
 
                     if (userResponse == "y")
                     {
+                        Console.Clear();
                         Console.WriteLine("Please enter the amount of funds");
                         var enteredAmount = Console.ReadLine().ToCharArray();
                         foreach (var ea in enteredAmount)
@@ -74,7 +76,11 @@ namespace quantumLeap.UserMenu
                             {
                                 string rebuilt = new string(enteredAmount);
                                 var currentBudgetBalance = Convert.ToInt32(rebuilt) + currentBalance;
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine($"Your current available funds are ${currentBudgetBalance}");
+                                Console.ResetColor();
+                                Console.WriteLine();
                                 leapRepo.saveBudget(currentBudgetBalance);
                                 var menu = new Menu();
 
@@ -112,7 +118,9 @@ namespace quantumLeap.UserMenu
                         for (var i = 0; i < historicalLeaps.Count; i++)
                        // foreach(Events Leap in historicalLeaps)
                         {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine($"Leap {i+1}: \n Leaper:{ historicalLeaps[i].Leaper},\n Date: { historicalLeaps[i].Date},\n Location: { historicalLeaps[i].Location},\n Host: { historicalLeaps[i].Host},\n IsPutRight: { historicalLeaps[i].isPutRight}\n\n");
+                            Console.ResetColor();
                         }
                         //Console.WriteLine("List leap history class/method will be called.");
                         break;
