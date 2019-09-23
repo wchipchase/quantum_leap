@@ -107,13 +107,20 @@ namespace quantumLeap.UserMenu
                     // Leap History class/method will be call here.
                     var leapRepo = new LeapRepository();
                     var historicalLeaps = leapRepo.GetLeaps();
-                    for (var i = 0; i < historicalLeaps.Count; i++)
-                   // foreach(Events Leap in historicalLeaps)
+                    if (historicalLeaps.Count > 0)
                     {
-                        Console.WriteLine($"Leap {i+1}: \n Leaper:{ historicalLeaps[i].Leaper},\n Date: { historicalLeaps[i].Date},\n Location: { historicalLeaps[i].Location},\n Host: { historicalLeaps[i].Host},\n IsPutRight: { historicalLeaps[i].isPutRight}\n\n");
+                        for (var i = 0; i < historicalLeaps.Count; i++)
+                       // foreach(Events Leap in historicalLeaps)
+                        {
+                            Console.WriteLine($"Leap {i+1}: \n Leaper:{ historicalLeaps[i].Leaper},\n Date: { historicalLeaps[i].Date},\n Location: { historicalLeaps[i].Location},\n Host: { historicalLeaps[i].Host},\n IsPutRight: { historicalLeaps[i].isPutRight}\n\n");
+                        }
+                        //Console.WriteLine("List leap history class/method will be called.");
+                        break;
                     }
-                    //Console.WriteLine("List leap history class/method will be called.");
-                    break;
+                    else
+                    {
+                        Console.WriteLine("Cannot show history of leaps because no one has lept yet.");
+                    }
                 } 
                 else if (userInput.ToLower() == "exit")
                 {
