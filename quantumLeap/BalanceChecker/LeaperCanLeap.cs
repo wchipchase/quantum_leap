@@ -8,15 +8,24 @@ namespace quantumLeap.BalanceChecker
 {
     class LeaperCanLeap
     {
-        public void LeapCharge()
+        public bool HasEnoughFunds { get; set; } = false;
+        public bool LeapCharge()
         {
             var leapRepo = new LeapRepository();
             var currentBal = leapRepo.currentAvailableBudget();
 
             if(currentBal >= 1000)
             {
-                Console.WriteLine($"You are good to go! {currentBal}");
-            } else
+                var updatedBudget = currentBal - 1000;
+                HasEnoughFunds = true;
+                leapRepo.saveBudget(updatedBudget);
+                Console.WriteLine();
+                Console.WriteLine($"$1,00 has been deducted from your budget. Your new balance is ${updatedBudget}. You are good to leap!");
+                Console.WriteLine();
+                Console.WriteLine("Leap info:");
+                Console.WriteLine();
+            }
+            else
             {
                 Console.Clear();
                 Console.BackgroundColor = ConsoleColor.Red;
@@ -26,6 +35,7 @@ namespace quantumLeap.BalanceChecker
                 var userMenu = new Menu();
                 userMenu.MenuItems();
             }
+            return HasEnoughFunds;
 
         }
     }
